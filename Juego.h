@@ -23,25 +23,25 @@ using namespace std;
 class Juego
 {
 private:
-    Carta *cabMazoOrd; // Transacciones Hechas
-    Carta *cabMazoDes; // Clientes en cola
+    Carta *cabMazoOrd; // cabeza del Mazo ordenado
+    Carta *cabMazoDes; // cabeza del Mazo desordenado
 public:
     Juego();
     ~Juego();
     //Mazo Ordenado
-    void crearMazoOrd();
-    void imprimirMazoOrd();
-    int cantidadMazoOrd();
-    void borrarMazoOrd(int pos);
-    Carta* cartaMazoOrd(int pos);
+    void crearMazoOrd(); // Crea un mazo ordenado con las 48 cartas
+    void imprimirMazoOrd(); // Imprime el mazo ordenado
+    int cantidadMazoOrd(); // cantidad de cartas en el mazo ordenado
+    void borrarMazoOrd(int pos); // borrar una carta en una posicion pos
+    Carta* cartaMazoOrd(int pos); // devuelve un apuntador a una carta en una posicion pos
 
     //Mazo Desordenado
-    void crearMazoDes();
-    void imprimirMazoDes();
-    int cantidadMazoDes();
-    void destaparMazoAut();
-    void destaparMazoMan();
-    void interfazPPal();
+    void crearMazoDes(); // crea un mazo desordenado a partir del mazo ordenado
+    void imprimirMazoDes(); // imprime el mazo desordenado
+    int cantidadMazoDes(); // cantidad de cartas en el mazo desordenado
+    void destaparMazoAut(); // destapa una a una las cartas del mazo desordenado cada cierto tiempo
+    void destaparMazoMan(); // pide que el usuario escriba algo para seguir destapando el mazo
+    void interfazPPal(); // maneja el menu o interfaz del programa
 
 };
 
