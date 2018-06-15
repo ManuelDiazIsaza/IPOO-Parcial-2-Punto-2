@@ -40,6 +40,7 @@ public:
     void imprimirMazoDes();
     int cantidadMazoDes();
     void destaparMazoAut();
+    void destaparMazoMan();
     void interfazPPal();
 
 };

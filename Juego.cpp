@@ -71,7 +71,7 @@ void Juego::interfazPPal()
                 destaparMazoAut();
                 break;
             case 2:
-
+                destaparMazoMan();
                 break;
             case 3:
                 imprimirMazoDes();
@@ -354,4 +354,63 @@ int Juego::cantidadMazoDes(){
         desplaza = desplaza->getSig();
     }
     return cant;
+}
+
+void Juego::destaparMazoMan(){
+    Carta *desplaza = cabMazoDes;
+    cout << "================== MAZO DE CARTAS ==================" << endl;
+    cout << setw(25) << "Nombre" << endl;
+    cout << "==================================================== " << endl;
+    if (cabMazoDes == nullptr) {
+        cout << endl << "El mazo de cartas esta vacio" << endl << endl;
+    } else {
+        while (desplaza != nullptr)
+        {
+            cout << setw(25);
+            if(desplaza->getIndice() == 1)
+            {
+                cout << "As de ";
+            }
+            else if(desplaza->getIndice() == 10)
+            {
+                cout << "Sota de ";
+            }
+            else if(desplaza->getIndice() == 11)
+            {
+                cout << "Caballo de ";
+            }
+            else if(desplaza->getIndice() == 12)
+            {
+                cout << "Rey de ";
+            }
+            else
+            {
+                cout << desplaza->getIndice() << " de ";
+            }
+            cout << desplaza->getPinta() << endl;
+
+            desplaza = desplaza->getSig();
+
+            bool valido = true;
+            while(valido)
+            {
+            string opci;
+            cout << "Desea Destapar la siguiente Carta (s/n)";
+            cin >> opci;
+            if(opci=="n")
+            {
+                desplaza = nullptr;
+                valido = false;
+            }
+            if(opci=="s")
+            {
+                valido = false;
+            }
+            else if(opci!="s")
+            {
+                cout << "Pulsaste una opcion incorrecta." << endl;
+            }
+            }
+        }
+    }
 }
