@@ -1,9 +1,9 @@
 /*
-  Archivo: caja.cpp
+  Archivo: Juego.cpp
   Autor: Manuel Diaz COD 1741652 - Jeffrey Rios COD 1744831
   Email: manuel.isaza@correounivalle.edu.co - jeffrey.rios@correounivalle.edu.co
-  Fecha creacion: 2018-06-14
-  Fecha ultima modificacion: 2018-06-14
+  Fecha creacion: 2018-06-15
+  Fecha ultima modificacion: 2018-06-15
   Version: 0.1
   Licencia: GPL
 */
@@ -17,11 +17,14 @@
 #include <iostream>
 #include <ctime>
 #include <iomanip>
+#include <windows.h>
 
 Juego::Juego()
 {
     cabMazoOrd = nullptr;
     cabMazoDes = nullptr;
+    crearMazoOrd();
+    crearMazoDes();
 }
 
 Juego::~Juego()
@@ -54,38 +57,37 @@ void Juego::interfazPPal()
     do
     {
         cout << ":::::::::::::::: MENU PRINCIPAL ::::::::::::::::" << endl;
-        cout << "-------------- Caja Gran Colombia --------------" << endl;
-        cout << "1: Nueva transaccion." << endl;
-        cout << "2: Ingresar cliente a la cola." << endl;
-        cout << "3: Mostrar Transacciones." << endl;
-        cout << "4: Mostrar Clientes en Cola." << endl;
-        cout << "5: Mostrar Clientes atendidos." << endl;
-        cout << "6: Total de dinero por transaccion." << endl;
-        cout << "7: Salir." << endl;
+        cout << "--------------- Juego de Cartas --------------" << endl;
+        cout << "1: Destapar Cartas Automaticamente." << endl;
+        cout << "2: Destapar Cartas Manualmente." << endl;
+        cout << "3: Mostrar Mazo." << endl;
+        cout << "4: Juego Nuevo." << endl;
+        cout << "5: Salir." << endl;
 
         cout << "Su opcion: " << endl;
         cin >> opcion;
         switch (opcion) {
             case 1:
+                destaparMazoAut();
                 break;
             case 2:
-            {
+
                 break;
-            }
             case 3:
+                imprimirMazoDes();
                 break;
             case 4:
+            {
+                Juego *juego = new Juego();
+                juego->interfazPPal();
                 break;
-            case 5:
-                break;
-            case 6:
-                break;
+            }
             default:
-                if (opcion != 7)
+                if (opcion != 5)
                     cout << endl << "=== Opcion no valida ===" << endl;
         }
 
-    } while (opcion != 7);
+    } while (opcion != 5);
 }
 
 //Metodos Mazo Ordenado
@@ -269,14 +271,76 @@ void Juego::crearMazoDes()
 void Juego::imprimirMazoDes(){
     Carta *desplaza = cabMazoDes;
     cout << "================== MAZO DE CARTAS ==================" << endl;
-    cout << setw(20) << "Nombre" << endl;
+    cout << setw(25) << "Nombre" << endl;
     cout << "==================================================== " << endl;
     if (cabMazoDes == nullptr) {
         cout << endl << "El mazo de cartas esta vacio" << endl << endl;
     } else {
-        while (desplaza != nullptr) {
-            cout << setw(20) << desplaza->getPinta() << " " << desplaza->getIndice() <<endl;
+        while (desplaza != nullptr)
+        {
+            cout << setw(25);
+            if(desplaza->getIndice() == 1)
+            {
+                cout << "As de ";
+            }
+            else if(desplaza->getIndice() == 10)
+            {
+                cout << "Sota de ";
+            }
+            else if(desplaza->getIndice() == 11)
+            {
+                cout << "Caballo de ";
+            }
+            else if(desplaza->getIndice() == 12)
+            {
+                cout << "Rey de ";
+            }
+            else
+            {
+                cout << desplaza->getIndice() << " de ";
+            }
+            cout << desplaza->getPinta() << endl;
+
             desplaza = desplaza->getSig();
+        }
+    }
+}
+
+void Juego::destaparMazoAut(){
+    Carta *desplaza = cabMazoDes;
+    cout << "================== MAZO DE CARTAS ==================" << endl;
+    cout << setw(25) << "Nombre" << endl;
+    cout << "==================================================== " << endl;
+    if (cabMazoDes == nullptr) {
+        cout << endl << "El mazo de cartas esta vacio" << endl << endl;
+    } else {
+        while (desplaza != nullptr)
+        {
+            cout << setw(25);
+                 if(desplaza->getIndice() == 1)
+                 {
+                     cout << "As de ";
+                 }
+                 else if(desplaza->getIndice() == 10)
+                 {
+                     cout << "Sota de ";
+                 }
+                 else if(desplaza->getIndice() == 11)
+                 {
+                     cout << "Caballo de ";
+                 }
+                 else if(desplaza->getIndice() == 12)
+                 {
+                     cout << "Rey de ";
+                 }
+                 else
+                 {
+                     cout << desplaza->getIndice() << " de ";
+                 }
+            cout << desplaza->getPinta() << endl;
+
+            desplaza = desplaza->getSig();
+            Sleep(2000);
         }
     }
 }

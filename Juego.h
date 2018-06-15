@@ -1,9 +1,9 @@
 /*
-  Archivo: caja.h
+  Archivo: Juego.h
   Autor: Manuel Diaz COD 1741652 - Jeffrey Rios COD 1744831
   Email: manuel.isaza@correounivalle.edu.co - jeffrey.rios@correounivalle.edu.co
-  Fecha creacion: 2018-06-14
-  Fecha ultima modificacion: 2018-06-14
+  Fecha creacion: 2018-06-15
+  Fecha ultima modificacion: 2018-06-15
   Version: 0.1
   Licencia: GPL
 */
@@ -39,7 +39,7 @@ public:
     void crearMazoDes();
     void imprimirMazoDes();
     int cantidadMazoDes();
-
+    void destaparMazoAut();
     void interfazPPal();
 
 };

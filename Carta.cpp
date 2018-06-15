@@ -1,9 +1,9 @@
 /*
-  Archivo: Taxi.cpp
+  Archivo: Carta.cpp
   Autor: Manuel Diaz COD: 1741652 - Jeffrey Rios COD: 1744831
   Email: manuel.isaza@correounivalle.edu.co - jeffrey.rios@correounivalle.edu.co
-  Fecha creación: 2018-05-11
-  Fecha Última modificación: 2018-05-15
+  Fecha creación: 2018-06-15
+  Fecha Última modificación: 2018-06-15
   Versión: 0.1
   Licencia: GPL
 */
