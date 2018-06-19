@@ -61,7 +61,7 @@ void Juego::interfazPPal()
         cout << "1: Destapar Cartas Automaticamente." << endl;
         cout << "2: Destapar Cartas Manualmente." << endl;
         cout << "3: Mostrar Mazo." << endl;
-        cout << "4: Juego Nuevo." << endl;
+        cout << "4: Juego Nuevo (Barajar)." << endl;
         cout << "5: Salir." << endl;
 
         cout << "Su opcion: " << endl;
@@ -363,8 +363,9 @@ void Juego::destaparMazoAut(){
             cout << desplaza->getPinta() << endl;
 
             desplaza = desplaza->getSig();
-            Sleep(2000);
+            Sleep(500);
         }
+        cabMazoDes = nullptr;
     }
 }
 
@@ -380,39 +381,42 @@ int Juego::cantidadMazoDes(){
 }
 
 void Juego::destaparMazoMan(){
-    Carta *desplaza = cabMazoDes;
+    Carta *borrar = cabMazoDes;
+    bool seguir = true;
     cout << "================== MAZO DE CARTAS ==================" << endl;
     cout << setw(25) << "Nombre" << endl;
     cout << "==================================================== " << endl;
     if (cabMazoDes == nullptr) {
         cout << endl << "El mazo de cartas esta vacio" << endl << endl;
     } else {
-        while (desplaza != nullptr)
+        while (seguir)
         {
             cout << setw(25);
-            if(desplaza->getIndice() == 1)
+            if(cabMazoDes->getIndice() == 1)
             {
                 cout << "As de ";
             }
-            else if(desplaza->getIndice() == 10)
+            else if(cabMazoDes->getIndice() == 10)
             {
                 cout << "Sota de ";
             }
-            else if(desplaza->getIndice() == 11)
+            else if(cabMazoDes->getIndice() == 11)
             {
                 cout << "Caballo de ";
             }
-            else if(desplaza->getIndice() == 12)
+            else if(cabMazoDes->getIndice() == 12)
             {
                 cout << "Rey de ";
             }
             else
             {
-                cout << desplaza->getIndice() << " de ";
+                cout << cabMazoDes->getIndice() << " de ";
             }
-            cout << desplaza->getPinta() << endl;
+            cout << cabMazoDes->getPinta() << endl;
 
-            desplaza = desplaza->getSig();
+            borrar = cabMazoDes;
+            cabMazoDes = cabMazoDes->getSig();
+            delete borrar;
 
             bool valido = true;
             while(valido)
@@ -422,18 +426,19 @@ void Juego::destaparMazoMan(){
             cin >> opci;
             if(opci=="n")
             {
-                desplaza = nullptr;
                 valido = false;
+                seguir = false;
             }
-            if(opci=="s")
+            else if(opci=="s")
             {
                 valido = false;
             }
-            else if(opci!="s")
+            else
             {
                 cout << "Pulsaste una opcion incorrecta." << endl;
             }
             }
+
         }
     }
 }

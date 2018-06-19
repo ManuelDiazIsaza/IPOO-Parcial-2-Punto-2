@@ -18,6 +18,7 @@ using namespace std;
 int main()
 {
     Juego *juego = new Juego();
+
     juego->interfazPPal();
 
     return 0;
