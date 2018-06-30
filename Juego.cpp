@@ -132,19 +132,10 @@ void Juego::crearMazoOrd()
                 }
                 else
                 {
-                    while(desplaza!= nullptr)
-                    {
-                        if(desplaza->getSig()== nullptr)
-                        {
-                            desplaza->setSig(nuevo);
-                            nuevo->setAnt(desplaza);
-                            desplaza= nullptr;
-                        }
-                        else
-                        {
-                            desplaza=desplaza->getSig();
-                        }
-                    }
+                    cabMazoOrd->setAnt(nuevo);
+                    nuevo->setSig(cabMazoOrd);
+                    cabMazoOrd = nuevo;
+                    nuevo->setAnt(nullptr);
                 }
             }
         }
