@@ -273,19 +273,10 @@ void Juego::crearMazoDes()
         }
         else
         {
-            while(desplaza!= nullptr)
-            {
-                if(desplaza->getSig()== nullptr)
-                {
-                    desplaza->setSig(nuevo);
-                    nuevo->setAnt(desplaza);
-                    desplaza= nullptr;
-                }
-                else
-                {
-                    desplaza=desplaza->getSig();
-                }
-            }
+            cabMazoDes->setAnt(nuevo);
+            nuevo->setSig(cabMazoDes);
+            cabMazoDes = nuevo;
+            nuevo->setAnt(nullptr);
         }
         borrarMazoOrd(pos);
     }
